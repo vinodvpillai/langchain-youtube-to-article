@@ -1,6 +1,5 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-#from langchain.llms import OpenAI
 from langchain_openai import ChatOpenAI
 from youtube_transcript_api import YouTubeTranscriptApi
 import whisper
@@ -37,8 +36,7 @@ def convert_audio_to_text(video_url):
 
 # Step 3: Summarize Text into Article Format
 def summarize_to_article(text):
-    # llm = OpenAI(model="gpt-3.5-turbo", temperature=0.5)
-    llm = ChatOpenAI(temperature=0, model=os.environ.get('OPENAI_MODEL'), api_key=os.environ.get('OPENAI_API_KEY'), base_url=os.environ.get('OPENAI_API_HOST'))  # type: ignore
+    llm = ChatOpenAI(temperature=0, model=os.environ.get('OPENAI_MODEL'), api_key=os.environ.get('OPENAI_API_KEY'))  # type: ignore
     prompt_template = """
     Convert the following transcript into a well-structured article:
     
